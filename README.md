@@ -6,9 +6,6 @@ I've also added a scrollbar to the users windows since when the server gets full
 
 here are some screenshots
 
-![Alt text](C:\Users\Manups4e\Desktop\Screenshot(196).jpg?raw=true)
-![Alt text](/relative/path/to/img.jpg?raw=true "Optional Title")
-![Alt text](/relative/path/to/img.jpg?raw=true "Optional Title")
-![Alt text](/relative/path/to/img.jpg?raw=true "Optional Title")
-![Alt text](/relative/path/to/img.jpg?raw=true "Optional Title")
-
+![ScreenShot](https://i.imgur.com/FgaGQZb.jpg)
+![ScreenShot](https://i.imgur.com/VusCct5.jpg)
+![ScreenShot](https://i.imgur.com/bK02Yu3.jpg)
