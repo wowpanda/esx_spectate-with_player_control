@@ -1,1 +1,3 @@
-# esx_spectate_with_player_control
+# esx_spectate
+
+Advanced version of ES_CAMERA
