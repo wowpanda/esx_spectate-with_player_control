@@ -1,3 +1,14 @@
-# esx_spectate
+# esx_spectate with Player Control
 
-Advanced version of ES_CAMERA
+This is my modded version that let's you check data, inventory, money, weapons and licenses of the player you're spectating.
+It's very useful to check if the player's using mods since my script let's you check if the player is using godmode and let's you check his health and armor (thx to EasyAdmin and Bluethefurry for that :P)
+I've also added a scrollbar to the users windows since when the server gets full the window get fullscreen and it's impossible to stop specting players since the red X is unclickable..
+
+here are some screenshots
+
+![Alt text](C:\Users\Manups4e\Desktop\Screenshot(196).jpg?raw=true)
+![Alt text](/relative/path/to/img.jpg?raw=true "Optional Title")
+![Alt text](/relative/path/to/img.jpg?raw=true "Optional Title")
+![Alt text](/relative/path/to/img.jpg?raw=true "Optional Title")
+![Alt text](/relative/path/to/img.jpg?raw=true "Optional Title")
+
