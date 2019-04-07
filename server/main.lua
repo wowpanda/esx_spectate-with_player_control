@@ -18,7 +18,7 @@ end)
 RegisterServerEvent('esx_spectate:kick')
 AddEventHandler('esx_spectate:kick', function(target, msg)
     local xPlayer = ESX.GetPlayerFromId(source)
-    if xPlayer.player.getGroup() ~= 'user' and xPlayer.player.getGroup() ~= nil then
+    if xPlayer.getGroup() ~= 'user' and xPlayer.getGroup() ~= nil then
         DropPlayer(target, msg)
     end
 end)
