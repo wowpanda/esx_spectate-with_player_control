@@ -1,3 +1,7 @@
+I'm no longer mantaining this.. you can keep your script updated here
+https://github.com/benzon/esx_spectate-with_player_control
+thx
+
 # esx_spectate (with Player Control)
 
 This is my modded version that let's you check data, inventory, money, weapons and licenses of the player you're spectating.
