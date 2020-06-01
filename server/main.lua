@@ -28,42 +28,47 @@ AddEventHandler('esx_spectate:kick', function(target, msg)
 end)
 
 ESX.RegisterServerCallback('esx_spectate:getOtherPlayerData', function(source, cb, target)
-        
-        local xPlayer = ESX.GetPlayerFromId(target)
-        if xPlayer ~= nil then
-            local identifier = GetPlayerIdentifiers(target)[1]
-            
-            local result = MySQL.Sync.fetchAll("SELECT * FROM users WHERE identifier = @identifier", {
-                ['@identifier'] = identifier
-            })
-            
-            local user = result[1]
-            local firstname = user['firstname']
-            local lastname = user['lastname']
-            local sex = user['sex']
-            local dob = user['dateofbirth']
-            local height = user['height'] .. " Centimetri"
-            local money = user['money']
-            local bank = user['bank']
-            
-            local data = {
-                name = GetPlayerName(target),
-                job = xPlayer.job,
-                inventory = xPlayer.inventory,
-                accounts = xPlayer.accounts,
-                weapons = xPlayer.loadout,
-                firstname = firstname,
-                lastname = lastname,
-                sex = sex,
-                dob = dob,
-                height = height,
-                money = money,
-                bank = bank
-            }
-            
-            TriggerEvent('esx_license:getLicenses', target, function(licenses)
-                data.licenses = licenses
-                cb(data)
-            end)
-        end
+    local xPlayer = ESX.GetPlayerFromId(target)
+    local result = MySQL.Sync.fetchAll("SELECT * FROM users WHERE identifier = @identifier", {
+        ['@identifier'] = GetLicense(target, "license")
+    })
+    
+    local user = result[1]
+    local firstname = user['firstname']
+    local lastname = user['lastname']
+    local sex = user['sex']
+    local dob = user['dateofbirth']
+    local height = user['height'] .. " Centimetri"
+    local money = user['money']
+    local bank = user['bank']
+    
+    local data = {
+        name = GetPlayerName(target),
+        job = xPlayer.job,
+        inventory = xPlayer.inventory,
+        accounts = xPlayer.accounts,
+        weapons = xPlayer.loadout,
+        firstname = firstname,
+        lastname = lastname,
+        sex = sex,
+        dob = dob,
+        height = height,
+        money = money,
+        bank = bank
+    }
+    
+    TriggerEvent('esx_license:getLicenses', target, function(licenses)
+        data.licenses = licenses
+    end)
+    cb(data)
 end)
+
+GetLicense = function (src, type)
+    -- Types: steam, license, ip
+    for k,v in ipairs(GetPlayerIdentifiers(src)) do
+        if string.sub(v, 1, string.len(type)) == string.lower(type) then
+            return string.sub(v, 9, string.len(v))
+        end
+    end
+    return false
+end

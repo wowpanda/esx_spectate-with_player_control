@@ -95,7 +95,6 @@ function getPlayersList()
 		}
 		table.insert(data, _data)
 	end
-
 	return data
 end
 
@@ -103,6 +102,7 @@ function OpenAdminActionMenu(player)
 
     ESX.TriggerServerCallback('esx_spectate:getOtherPlayerData', function(data)
 
+      print(json.encode(data))
       local jobLabel    = nil
       local sexLabel    = nil
       local sex         = nil
@@ -114,10 +114,16 @@ function OpenAdminActionMenu(player)
 	  local blackMoney	= 0
 	  local Inventory	= nil
 	  
-    for i=1, #data.accounts, 1 do
-      if data.accounts[i].name == 'black_money' then
-        blackMoney = data.accounts[i].money
-      end
+    for k,v in pairs(data.accounts) do
+        if v.name == 'black_money' then
+            blackMoney = v.money
+		end
+        if v.name == 'money' then
+            Money = v.money
+		end
+        if v.name == 'bank' then
+            Bank = v.money
+		end
     end
 
 	  if data.job.grade_label ~= nil and  data.job.grade_label ~= '' then
@@ -136,19 +142,7 @@ function OpenAdminActionMenu(player)
       else
         sexLabel = 'Sex : Unknown'
       end
-	  
-	  if data.money ~= nil then
-		Money = data.money
-		else
-		Money = 'No Data'
-	  end
-
- 	  if data.bank ~= nil then
-		Bank = data.bank
-		else
-		Bank = 'No Data'
-	  end
-	  
+	  	  
       if data.dob ~= nil then
         dobLabel = 'DOB : ' .. data.dob
       else
@@ -161,19 +155,13 @@ function OpenAdminActionMenu(player)
         heightLabel = 'Height : Unknown'
       end
 
-      if data.name ~= nil then
-        idLabel = 'Steam ID : ' .. data.name
-      else
-        idLabel = 'Steam ID : Unknown'
-      end
-	  
       local elements = {
         {label = 'Name: ' .. data.firstname .. " " .. data.lastname, value = nil},
-        {label = 'Money: '.. data.money, value = nil},
-        {label = 'Bank: '.. data.bank, value = nil},
+        {label = 'Money: '.. Money, value = nil, itemType = 'item_account', amount = Money},
+        {label = 'Bank: '.. Bank, value = nil, itemType = 'item_account', amount = Bank},
         {label = 'Black Money: '.. blackMoney, value = nil, itemType = 'item_account', amount = blackMoney},
-		{label = jobLabel,    value = nil},
-        {label = idLabel,     value = nil},
+		{label = "Player Name:" .. jobLabel,    value = nil},
+        {label = data.name,     value = nil},
     }
 	
     table.insert(elements, {label = '--- Inventory ---', value = nil})
