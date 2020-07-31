@@ -160,8 +160,8 @@ function OpenAdminActionMenu(player)
         {label = 'Money: '.. Money, value = nil, itemType = 'item_account', amount = Money},
         {label = 'Bank: '.. Bank, value = nil, itemType = 'item_account', amount = Bank},
         {label = 'Black Money: '.. blackMoney, value = nil, itemType = 'item_account', amount = blackMoney},
-		{label = "Player Name:" .. jobLabel,    value = nil},
-        {label = data.name,     value = nil},
+	{label = jobLabel,    value = nil},
+        {label = "Player Name:" .. data.name,     value = nil},
     }
 	
     table.insert(elements, {label = '--- Inventory ---', value = nil})
