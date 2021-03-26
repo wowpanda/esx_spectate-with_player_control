@@ -7,7 +7,7 @@ RegisterCommand("spectate", function(source, args, user)
 end)
 ]]
 
-ESX.RegisterCommand('spectate', 'user', function(xPlayer, args, showError)
+ESX.RegisterCommand('spectate', 'user', function(source, args, showError)
 	TriggerClientEvent('esx_spectate:spectate', source, target))
 end, false, {help = _U('chat_clear')})
 
