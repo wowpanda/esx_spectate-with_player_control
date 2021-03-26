@@ -1,10 +1,17 @@
 ESX = nil
 
 TriggerEvent('esx:getSharedObject', function(obj)ESX = obj end)
-
+ --[[
 RegisterCommand("spectate", function(source, args, user)
     TriggerClientEvent('esx_spectate:spectate', source, target)
 end)
+]]
+
+ESX.RegisterCommand('spectate', 'user', function(xPlayer, args, showError)
+	TriggerClientEvent('esx_spectate:spectate', source, target))
+end, false, {help = _U('chat_clear')})
+
+
 
 ESX.RegisterServerCallback('esx_spectate:getPlayerData', function(source, cb, id)
     local xPlayer = ESX.GetPlayerFromId(id)
